@@ -2,6 +2,7 @@ package cl.duoc.app.clients;
 
 import cl.duoc.app.model.InitTransaction;
 import cl.duoc.app.model.InitTransactionResponse;
+import cl.duoc.app.model.TransactionDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,7 +43,7 @@ public interface IWebPayFeignClient {
                         @PathVariable("token") String token);
 
     @GetMapping(path = "/rswebpaytransaction/api/webpay/v1.2/transactions/{token}")
-    String obtenerTrx(@RequestHeader("Tbk-Api-Key-Id")     String apiKeyId,
-                        @RequestHeader("Tbk-Api-Key-Secret") String apiKeySecret,
-                        @PathVariable("token") String token);
+    TransactionDTO obtenerTrx(@RequestHeader("Tbk-Api-Key-Id")     String apiKeyId,
+                              @RequestHeader("Tbk-Api-Key-Secret") String apiKeySecret,
+                              @PathVariable("token") String token);
 }

@@ -2,6 +2,7 @@ package cl.duoc.app.controller;
 
 import cl.duoc.app.model.InitTransaction;
 import cl.duoc.app.model.InitTransactionResponse;
+import cl.duoc.app.model.TransactionDTO;
 import cl.duoc.app.services.WebPayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +19,12 @@ public class WebPayController {
     }
 
     @PutMapping("/confirmar-trx/{token}")
-    String confirmarTrx(@PathVariable("token") String token){
+    public String confirmarTrx(@PathVariable("token") String token){
         return webPayService.confirmarTrx(token);
     }
 
     @GetMapping("/obtener-trx/{token}")
-    String obtenerTrx(@PathVariable("token") String token){
+    public TransactionDTO obtenerTrx(@PathVariable("token") String token){
         return webPayService.obtenerTrx(token);
     }
 }
